@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_74np#-#xop%679v#pawnzg^o#w&24bele10+3xyl70*1(ib!6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,15 +43,22 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+
+    ),
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -137,13 +144,23 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'SEND_CONFIRMATION_EMAIL': True,
     'ACTIVATION_URL': 'activation/{uid}/{token}',
+    'SERIALIZERS': {
+        'user_create': 'accounts.serializers.CustomUserSerializer',
+    },
 }
 
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '4f0636af140307'
-EMAIL_HOST_PASSWORD = 'f9387ff69c83d8'
-EMAIL_PORT = '2525'
+# EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+# EMAIL_HOST_USER = '071402bd28ae37'
+# EMAIL_HOST_PASSWORD = '87ddd7b2440187'
+# EMAIL_PORT = '2525'
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8000',
-]
+CORS_ORIGIN_ALLOW_ALL = True
+
+BASE_URL = 'http://localhost:3000/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'marcvince74@gmail.com'
+EMAIL_HOST_PASSWORD = 'gbfkmfmswhcbejom'
