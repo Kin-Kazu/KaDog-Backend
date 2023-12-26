@@ -154,13 +154,19 @@ DJOSER = {
 # EMAIL_HOST_PASSWORD = '87ddd7b2440187'
 # EMAIL_PORT = '2525'
 
+# {This is the current code for SeekMe Backend integration}
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_HOST_USER = 'marcvince74@gmail.com'
+#EMAIL_HOST_PASSWORD = 'gbfkmfmswhcbejom'
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 BASE_URL = 'http://localhost:3000/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'marcvince74@gmail.com'
-EMAIL_HOST_PASSWORD = 'gbfkmfmswhcbejom'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '804b9a20a9e34a'
+EMAIL_HOST_PASSWORD = '8a0d616976d165'
+EMAIL_PORT = '2525'
