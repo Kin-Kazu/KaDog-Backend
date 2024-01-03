@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
+    'events',
 ]
 
 REST_FRAMEWORK = {
@@ -53,12 +54,12 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -162,9 +163,16 @@ DJOSER = {
 #EMAIL_HOST_USER = 'marcvince74@gmail.com'
 #EMAIL_HOST_PASSWORD = 'gbfkmfmswhcbejom'
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'exp://192.168.254.192:8081',
+]
+CORS_ALLOW_HEADERS = ['*']
+CORS_ORIGIN_WHITELIST = [
+    'exp://192.168.254.192:8081',
+]
 
-BASE_URL = 'http://localhost:3000/'
+BASE_URL = 'http://localhost:8000/'
 
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
 EMAIL_HOST_USER = '804b9a20a9e34a'
